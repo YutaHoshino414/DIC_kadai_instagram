@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: instagram_clone_development
+  database: instagram_clone02_development
 
 test:
   <<: *default
-  database: instagram_clone_test
+  database: instagram_clone02_test
 
 production:
   <<: *default
-  database: instagram_clone_production
-  username: instagram_clone
-  password: <%= ENV['INSTAGRAM_CLONE_DATABASE_PASSWORD'] %>
+  database: instagram_clone02_production
+  username: instagram_clone02
+  password: <%= ENV['INSTAGRAM_CLONE02_DATABASE_PASSWORD'] %>
