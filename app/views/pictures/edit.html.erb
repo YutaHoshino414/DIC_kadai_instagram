@@ -1,0 +1,17 @@
+<h2>編集する</h2>
+
+<%= form_with(model: @picture, local: true) do |form| %>
+
+  <div>
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <div>
+  <p>投稿中の画像：<%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p><br>
+  <%= form.hidden_field :image_cache %>
+  <h4>別の画像に変更</h4>
+  <%= form.label :image %>
+  <%= form.file_field :image %>
+</div><br>
+  <%= form.submit %>
+<% end %>

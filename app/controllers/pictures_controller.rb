@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show]
+  before_action :set_picture, only: [:show, :edit, :update]
 
   def index
     @pictures = Picture.all
@@ -20,6 +20,17 @@ class PicturesController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @picture.update(picture_params)
+      redirect_to pictures_path, notice: "投稿を編集しました！"
+    else
+      render :edit
+    end
   end
 
   private
