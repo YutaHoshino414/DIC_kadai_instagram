@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # @user.image = "default.jpg"
     if @user.save
       redirect_to user_path(@user.id)
     else
@@ -17,9 +18,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+     #binding.pry
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), notice: "プロフィールを編集しました！"
+    else
+      render :edit
+    end
+  end
+
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
 end

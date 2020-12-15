@@ -1,3 +1,6 @@
 <h1><%= @user.name %>のページ</h1>
 <p>イメージアイコン: <%= image_tag @user.image.url %></p>
+<p>なまえ: <%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
+
+<td><%= link_to '編集', edit_user_path(@user.id) %></td>
