@@ -14,6 +14,7 @@
         <td><%= picture.content %></td>
         <td><%= image_tag picture.image.url %></td> 
         <td><%= picture.user.name %></td>
+        <td><%= link_to '詳細を確認', picture_path(picture.id) %></td>
         </tr>
     <% end %>
   </tbody>
