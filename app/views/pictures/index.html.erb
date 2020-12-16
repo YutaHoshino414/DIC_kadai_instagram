@@ -2,16 +2,18 @@
 <table class="index_all">
   <thead>
     <tr>
-      <th>いいね！　</th>
+      <th style="color:red;">いいね！　</th>
       <th>投稿内容</th>
       <th>Image</th>
       <th>投稿者</th>
+      <th>　</th>
+      <th>　</th>
+      <th>　</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @pictures.each do |picture| %>
-      <tr>
+      <% @pictures.each do |picture| %>
         <td><i class="fas fa-heart unlike-btn"><%= picture.favorites.count %></i></td>
         <td><%= picture.content %></td>
         <td><%= image_tag picture.image.url %></td> 

@@ -1,0 +1,9 @@
+<h1>お気に入り一覧ページ</h1>
+<h2>「いいね」した投稿：</h2>
+<% @favorites.each do |f| %>
+  <ul>
+    <li><%= f.user.name %>さんの投稿</li>
+        <%= image_tag f.image.url %>
+  </ul>
+<% end %><hr>
+<%= link_to 'Myページに戻る', user_path(@user.id) %>
