@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :logged_in?, only: [:show, :edit]
+  before_action :logged_in_user, only:[:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:show, :edit, :update]
 
   def new
     @user =User.new
@@ -41,5 +44,12 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    if @user.id != current_user.id
+      redirect_to pictures_path, notice: "権限がありません"
+    end
   end
 end

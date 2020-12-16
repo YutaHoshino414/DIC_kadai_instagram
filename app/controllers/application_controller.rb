@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+  
+  private
+  def logged_in_user
+    unless logged_in?
+      redirect_to new_session_path, notice: "ログインはお済みですか？"
+    end
+  end
 end
