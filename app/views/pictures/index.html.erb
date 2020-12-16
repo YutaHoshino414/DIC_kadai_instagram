@@ -2,6 +2,7 @@
 <table class="index_all">
   <thead>
     <tr>
+      <th>いいね！　</th>
       <th>投稿内容</th>
       <th>Image</th>
       <th>投稿者</th>
@@ -11,12 +12,18 @@
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
+        <td><i class="fas fa-heart unlike-btn"><%= picture.favorites.count %></i></td>
         <td><%= picture.content %></td>
         <td><%= image_tag picture.image.url %></td> 
         <td><%= picture.user.name %></td>
         <td><%= link_to '詳細を確認', picture_path(picture.id) %></td>
+      <% if logged_in? && current_user.id == picture.user_id %>
         <td><%= link_to '編集', edit_picture_path(picture.id) %></td>
         <td><%= link_to '削除', picture_path(picture.id), method: :delete, data: {confirm: "本当に削除していいですか？"} %></td>
+      <% else %>
+        <td>　</td>
+        <td>　</td>
+      <% end %>
         </tr>
     <% end %>
   </tbody>

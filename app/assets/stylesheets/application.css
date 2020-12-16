@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+ .header{
+    background: linear-gradient(to bottom right, royalblue, purple, red, yellow);
+    height: 100px;
+  }
+
+ .log_in{
+  float:right;
+  color:#fff;
+}
+.edit_link{
+  color:#fff;
+  text-decoration: none;
+}
+ 
+.image_circle{
+  
+}
