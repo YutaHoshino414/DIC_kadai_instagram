@@ -3,6 +3,6 @@
 <p>なまえ: <%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
 
-<%= link_to '編集', edit_user_path(@user.id) %><hr>
-<%= link_to 'お気に入りした投稿一覧', like_user_path(@user.id) %><hr>
+<%= link_to '編集', edit_user_path(@user.id) %>
+<p><%= link_to 'お気に入りした投稿一覧', like_user_path(@user.id) %></p><hr>
 <%= link_to "みんなの投稿を確認", pictures_path %>
