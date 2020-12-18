@@ -9,7 +9,7 @@
     <% end %>
   <% else %>
     <%= link_to favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' do%>
-    <i class="far fa-heart like-btn"></i>
+    <i class="far fa-heart like-btn">いいねする</i>
     <% end %>
 
   <% end %>

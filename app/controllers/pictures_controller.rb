@@ -30,7 +30,11 @@ class PicturesController < ApplicationController
   end
 
   def show
+    if logged_in?
     @favorite = current_user.favorites.find_by(picture_id: @picture.id)
+    else
+      redirect_to new_session_path, notice: "ログインが必要です"
+    end
   end
 
   def edit

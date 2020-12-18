@@ -1,4 +1,6 @@
 <div class="header">
+<i class="fab fa-instagram"></i>
+<h1><%= link_to "fastagram", pictures_path, class:"header_title" %></h1>
 <div class="log_in">
 <% if logged_in? %>
     <p><%= link_to "Myページ(ログイン中)", user_path(current_user.id),class:"edit_link" %></p>
