@@ -1,4 +1,7 @@
-<h1>アカウント新規登録</h1>
+<div class="bg-light p-3 p-sm-5 my-4 rounded">
+  <h1>アカウント新規登録</h1>
+</div>
+
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= @user.errors.count %>件のエラーがあります。</h2>
@@ -22,6 +25,6 @@
   <%= f.label :image %>
   <%= f.file_field :image %><br><br>
 
-  <%= f.submit "Create my account" %>
+  <%= f.submit "アカウント登録", class: "btn btn-lg, btn-primary" %>
 <% end %><br>
 <%= link_to "みんなの投稿はこちら", pictures_path %>

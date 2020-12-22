@@ -1,4 +1,6 @@
+<div class="bg-light p-3 p-sm-5 my-4 rounded">
 <h1>新規投稿</h1>
+</div>
 <%= form_with(model: @picture, local: true, url: confirm_pictures_path ) do |form| %>
 
   <div>
@@ -12,5 +14,5 @@
     <%= form.hidden_field :image_cache %>
   </div>
   <br>
-  <%= form.submit '投稿する' %>
+  <%= form.submit '投稿する', class: "btn btn-lg, btn-primary" %>
 <% end %>

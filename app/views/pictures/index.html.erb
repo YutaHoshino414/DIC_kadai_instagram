@@ -1,20 +1,27 @@
-<h1>投稿一覧</h1>
-<table class="index_all">
+<div class="bg-light p-3 p-sm-5 my-4 rounded">
+<i class="fab fa-instagram-square index_logo"></i>
+<h1 class="index_title">投稿一覧</h1>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="contents col-md-10">
+<table class="table align-middle table-hover">
   <thead>
     <tr>
-      <th>いいねカウント　</th>
       <th>投稿内容</th>
-      <th>Image</th>
+      <th>投稿写真</th>
       <th>投稿者</th>
       <th>　</th>
       <th>　</th>
       <th>　</th>
+      <th>いいねカウント　</th>
     </tr>
   </thead>
 
   <tbody>
       <% @pictures.each do |picture| %>
-        <td><i class="fas fa-heart unlike-btn"><%= picture.favorites.count %></i></td>
+        
         <td><%= picture.content %></td>
         <td><%= image_tag picture.image.url %></td> 
         <td><%= picture.user.name %></td>
@@ -26,12 +33,19 @@
         <td>　</td>
         <td>　</td>
       <% end %>
+      <td><i class="fas fa-heart unlike-btn"><%= picture.favorites.count %></i></td>
         </tr>
     <% end %>
   </tbody>
-</table><hr>
+</table>
+</div>
+</div>
+<div class="topic col-md-2">
+</div>
+</div>
+
 <% if logged_in? %>
-<%= link_to '写真を投稿する', new_picture_path %>
+<%= link_to '写真を投稿する', new_picture_path, class: "btn btn-lg, btn-primary" %>
 <% else %>
-<%= link_to '写真を投稿する', new_user_path %>
+<%= link_to '写真を投稿する', new_session_path, class: "btn btn-outline-primary" %>
 <% end %>

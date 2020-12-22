@@ -3,11 +3,11 @@
 <h1><%= link_to "fastagram", pictures_path, class:"header_title" %></h1>
 <div class="log_in">
 <% if logged_in? %>
-    <p><%= link_to "Myページ(ログイン中)", user_path(current_user.id),class:"edit_link" %></p>
-    <%= link_to "ログアウト", session_path(current_user.id), method: :delete ,class:"edit_link" %>
+    <%= link_to "Myページ(ログイン中)", user_path(current_user.id),class:"edit_link", class: "btn btn-light" %>
+    <%= link_to "ログアウト", session_path(current_user.id), method: :delete ,class:"edit_link", class: "btn btn-secondary" %>
 <% else %>
-    <p><%= link_to "Sign up", new_user_path, class:"edit_link" %></p>
-    <%= link_to "Login", new_session_path, class:"edit_link" %>
+    <%= link_to "Sign up", new_user_path, class:"edit_link",  class: "btn btn-outline-primary" %>
+    <%= link_to "Login", new_session_path, class:"edit_link",  class: "btn btn-light" %>
 <% end %>
 </div>
 </div>
