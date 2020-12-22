@@ -16,18 +16,22 @@ class PicturesController < ApplicationController
   def confirm
     
     @picture = Picture.new(picture_params)
-    # render :new if @picture.invalid?
+    render :new if @picture.invalid?
   end
 
   def create
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
-    if @picture.save
-      PictureMailer.picture_mail(@picture).deliver 
-      redirect_to pictures_path, notice: "投稿を作成しました！"
+    if params[:back]
+      render :new
+    else
+      if @picture.save
+        PictureMailer.picture_mail(@picture).deliver 
+        redirect_to pictures_path, notice: "投稿を作成しました！"
       else
         render :new
       end
+    end
   end
 
   def show
