@@ -2,18 +2,19 @@
   <h1>編集する</h1>
 </div>
 
-<%= form_with(model: @picture, local: true) do |form| %>
-
-  <div>
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-  <div>
-  <p>投稿中の画像：<%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p><br>
-  <%= form.hidden_field :image_cache %>
-  <h4>別の画像に変更</h4>
-  <%= form.label :image %>
-  <%= form.file_field :image %>
-</div><br>
-  <%= form.submit "更新する", class: "btn btn-lg, btn-success" %>
-<% end %>
+<div class="w-50 mx-auto">
+  <%= form_with(model: @picture, local: true) do |form| %>
+    <div>
+      <%= form.label :content, class: "col-form-label" %>
+      <%= form.text_field :content, class: "form-control" %>
+    </div><br>
+    <div>
+      <p>投稿中の画像：<%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p><br>
+      <%= form.hidden_field :image_cache %>
+      <h4>別の画像に変更</h4><br>
+      <%= form.label :image %>
+      <%= form.file_field :image, class: "btn btn-lg, btn-secondary" %>
+    </div><br>
+    <%= form.submit "更新する", class: "btn btn-lg, btn-success" %>
+  <% end %>
+</div>

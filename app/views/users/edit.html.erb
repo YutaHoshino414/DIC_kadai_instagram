@@ -3,18 +3,19 @@
   <p>現在の設定画像：<%= image_tag(@user.image.url(:thumb)) if @user.image && @user.image.url %></p>
 </div>
   <h3>情報を編集する</h3><br>
-  <%= form_with(model: @user, local: true) do |f| %>  
-    <%= f.label :name %>
-    <%= f.text_field :name %><br><br>
-    <%= f.label :email %>
-    <%= f.email_field :email %><br><br>
-    <%= f.label :password %>
-    <%= f.hidden_field :password, value: @user.password_digest %><br>
-    <%= f.label :password_confirmation %>
-    <%= f.hidden_field :password_confirmation, value: @user.password_digest %><br><br>
-    <%= f.hidden_field :image_cache %>
-    <%= f.label :image %>
-    <%= f.file_field :image %> <br><br>
-    <%= f.submit "編集する", class: "btn btn-lg, btn-primary" %>
-  <% end %><br><hr>
+    <%= form_with(model: @user, local: true) do |f| %>  
+      <%= f.label :name %>
+      <%= f.text_field :name %><br><br>
+      <%= f.label :email %>
+      <%= f.email_field :email %><br><br>
+      <%= f.label :password %>
+      <%= f.hidden_field :password, value: @user.password_digest %><br>
+      <%= f.label :password_confirmation %>
+      <%= f.hidden_field :password_confirmation, value: @user.password_digest %><br><br>
+      <%= f.hidden_field :image_cache %>
+      <%= f.label :image %>
+      <%= f.file_field :image %> <br><br>
+      <%= f.submit "編集する", class: "btn btn-lg, btn-primary" %>
+    <% end %><br><hr>
+
   <%= link_to 'Myページに戻る', user_path(@user.id) %>
