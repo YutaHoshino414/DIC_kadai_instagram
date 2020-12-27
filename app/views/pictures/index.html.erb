@@ -6,13 +6,15 @@
                    <h2 class="text-white mt-0">写真をシェアしよう！</h2>
                    <hr class="divider light my-4" />
                    <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
-                   <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">アカウント登録はこちら</a>
+                   <a class="btn btn-outline-info btn-xl js-scroll-trigger" href="#services">アカウント登録はこちら</a>
                </div>
            </div>
        </div>
    </section>
 <br><br><br>
-<h3>最近の投稿</h3><hr><br>
+<div class="bg-light"><br>
+<h4>投稿一覧</h4>
+</div><br>
 
   <div class="row row-cols-2 row-cols-md-4 g-4">
 <% @pictures.each do |picture| %>
@@ -23,10 +25,16 @@
         <div class="card-body text-secondary">
           <p class="card-text"><%= picture.content %></p>
           <div class="card-footer">
-            <span>by_<%= picture.user.name %></span>
+          <span><%= picture.created_at.strftime('%Y/%m/%d') %>_by</span>
+            <span style="color:black;"><%= picture.user.name %></span>
             <i class="fas fa-heart unlike-btn"><%= picture.favorites.count %></i><br><br>
+            <% if logged_in? && current_user.id == picture.user_id %>
               <%= link_to '編集', edit_picture_path(picture.id), class: "btn btn-outline-success" %>
               <%= link_to '削除', picture_path(picture.id), class: "btn btn-outline-danger" , method: :delete, data: {confirm: "本当に削除していいですか？"} %>
+            <% else %>
+              <span>　</span>
+              <span>　</span>
+            <% end %>       
           </div>
         </div>
       </div>
