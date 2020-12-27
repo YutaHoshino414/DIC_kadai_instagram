@@ -1,51 +1,56 @@
-<div class="bg-light p-3 p-sm-5 my-4 rounded">
-<i class="fab fa-instagram-square index_logo"></i>
-<h1 class="index_title">投稿一覧</h1>
-</div>
+<!-- About--><br><br>
+   <section class="page-section bg-info shadow" id="intro">
+       <div class="container">
+           <div class="row justify-content-center">
+               <div class="col-lg-8 text-center">
+                   <h2 class="text-white mt-0">写真をシェアしよう！</h2>
+                   <hr class="divider light my-4" />
+                   <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
+                   <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">アカウント登録はこちら</a>
+               </div>
+           </div>
+       </div>
+   </section>
+<br><br><br>
+<h3>最近の投稿</h3><hr><br>
 
-<div class="container">
-  <div class="row">
-    <div class="contents col-md-11">
-      <table class="table align-middle table-hover">
-        <thead>
-          <tr>
-            <th>投稿内容</th>
-            <th>投稿写真</th>
-            <th>投稿者</th>
-            <th>　</th>
-            <th>　</th>
-            <th>　</th>
-            <th>いいねカウント　</th>
-          </tr>
-        </thead>
-      
-        <tbody>
-          <tr>
-            <% @pictures.each do |picture| %>
-              <td><%= picture.content %></td>
-              <td><%= image_tag picture.image.url %></td> 
-              <td><%= picture.user.name %></td>
-              <td><%= link_to '詳細を確認', picture_path(picture.id), class: "btn btn-outline-primary" %></td>
-            <% if logged_in? && current_user.id == picture.user_id %>
-              <td><%= link_to '編集', edit_picture_path(picture.id), class: "btn btn-outline-success" %></td>
-              <td><%= link_to '削除', picture_path(picture.id), class: "btn btn-outline-danger" , method: :delete, data: {confirm: "本当に削除していいですか？"} %></td>
-            <% else %>
-              <td>　</td>
-              <td>　</td>
-            <% end %>
-            <td><i class="fas fa-heart unlike-btn"><%= picture.favorites.count %></i></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <div class="row row-cols-2 row-cols-md-4 g-4">
+<% @pictures.each do |picture| %>
+    <div class="col">
+      <div class="card shadow">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <p class="card-img-top"><%= link_to image_tag(picture.image.url), picture_path(picture.id) %></p>
+        <div class="card-body text-secondary">
+          <p class="card-text"><%= picture.content %></p>
+          <div class="card-footer">
+            <span>by_<%= picture.user.name %></span>
+            <i class="fas fa-heart unlike-btn"><%= picture.favorites.count %></i><br><br>
+              <%= link_to '編集', edit_picture_path(picture.id), class: "btn btn-outline-success" %>
+              <%= link_to '削除', picture_path(picture.id), class: "btn btn-outline-danger" , method: :delete, data: {confirm: "本当に削除していいですか？"} %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="topic col-md-1">
-    </div>
+<% end %>
   </div>
-</div>
+<br><br><hr>
 
 <% if logged_in? %>
   <%= link_to '写真を投稿する', new_picture_path, class: "btn btn-lg, btn-primary" %>
 <% else %>
   <%= link_to '写真を投稿する', new_session_path, class: "btn btn-outline-primary" %>
 <% end %>
+<br><br><hr>
+<!-- About-->
+   <section class="page-section bg-secondary" id="about">
+       <div class="container">
+           <div class="row justify-content-center">
+               <div class="col-lg-8 text-center">
+                   <h2 class="text-white mt-0">We've got what you need!</h2>
+                   <hr class="divider light my-4" />
+                   <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
+                   <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+               </div>
+           </div>
+       </div>
+   </section>

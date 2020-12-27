@@ -7,7 +7,7 @@
     <%= link_to "ログアウト", session_path(current_user.id), method: :delete ,class:"edit_link", class: "btn btn-secondary" %>
 <% else %>
     <%= link_to "Sign up", new_user_path, class:"edit_link",  class: "btn btn-outline-primary" %>
-    <%= link_to "Login", new_session_path, class:"edit_link",  class: "btn btn-light" %>
+    <%= link_to "Login", new_session_path, class:"edit_link",  class: "btn btn-secondary" %>
 <% end %>
 </div>
 </div>
