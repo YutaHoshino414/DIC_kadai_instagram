@@ -6,11 +6,43 @@
                    <h2 class="text-white mt-0">写真をシェアしよう！</h2>
                    <hr class="divider light my-4" />
                    <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
-                   <a class="btn btn-outline-info btn-xl js-scroll-trigger" href="#services">アカウント登録はこちら</a>
+        <!-- 切り替えボタンの設定 -->
+                   <button type="button" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                     ログインして投稿
+                   </button>
                </div>
            </div>
        </div>
    </section>
+   
+        <!-- モーダルの設定 -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+     <div class="modal-dialog modal-lg">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLabel">ログイン画面</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+         </div>
+         <div class="modal-body">
+           <div class="mb-3">
+             <label for="exampleInputEmail1" class="form-label">メールアドレス</label>
+             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+           </div>
+           <div class="mb-3">
+             <label for="exampleInputPassword1" class="form-label">パスワード</label>
+             <input type="password" class="form-control" id="exampleInputPassword1">
+             <span id="passwordHelpBlock" class="form-text">パスワードは、文字と数字を含めて8～20文字で、空白、特殊文字、絵文字を含むことはできません。</span>
+           </div>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+           <button type="button" class="btn btn-primary">変更を保存</button>
+         </div><!-- /.modal-footer -->
+       </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+   </div><!-- /.modal -->
+
+
 <br><br><br>
 <div class="bg-light"><br>
 <h4>投稿一覧</h4>
@@ -20,7 +52,6 @@
 <% @pictures.each do |picture| %>
     <div class="col">
       <div class="card shadow">
-        <!-- <img src="..." class="card-img-top" alt="..."> -->
         <p class="card-img-top"><%= link_to image_tag(picture.image.url), picture_path(picture.id) %></p>
         <div class="card-body text-secondary">
           <p class="card-text"><%= picture.content %></p>
