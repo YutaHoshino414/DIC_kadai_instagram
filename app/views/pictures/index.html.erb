@@ -7,7 +7,7 @@
                    <hr class="divider light my-4" />
                    <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
         <!-- 切り替えボタンの設定 -->
-                   <button type="button" class="btn btn-outline-info btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   <button type="button" class="btn btn-outline-info btn-lg rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
                      ログインして投稿
                    </button>
                </div>
@@ -51,21 +51,25 @@
   <div class="row row-cols-2 row-cols-md-4 g-4">
 <% @pictures.each do |picture| %>
     <div class="col">
-      <div class="card shadow">
+      <div class="card h-100 shadow">
         <p class="card-img-top"><%= link_to image_tag(picture.image.url), picture_path(picture.id) %></p>
         <div class="card-body text-secondary">
-          <p class="card-text"><%= picture.content %></p>
+          <p class="card-text"><small><%= picture.content %></small></p>
           <div class="card-footer">
-          <span><%= picture.created_at.strftime('%Y/%m/%d') %>_by</span>
-            <span style="color:black;"><%= picture.user.name %></span>
-            <i class="fas fa-heart unlike-btn"><%= picture.favorites.count %></i><br><br>
+            <div>
+              <small><%= picture.created_at.strftime('%Y/%m/%d') %>_by</small>
+              <span style="color:black;"><%= picture.user.name %></span>
+            </div>
+            <i class="fas fa-heart unlike-btn"><%= picture.favorites.count %></i><span>　</span>
+            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+
             <% if logged_in? && current_user.id == picture.user_id %>
               <%= link_to '編集', edit_picture_path(picture.id), class: "btn btn-outline-success" %>
               <%= link_to '削除', picture_path(picture.id), class: "btn btn-outline-danger" , method: :delete, data: {confirm: "本当に削除していいですか？"} %>
             <% else %>
               <span>　</span>
               <span>　</span>
-            <% end %>       
+            <% end %> 
           </div>
         </div>
       </div>
