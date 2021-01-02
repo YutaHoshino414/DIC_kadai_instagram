@@ -66,10 +66,11 @@
             <% if logged_in? && current_user.id == picture.user_id %>
               <%= link_to '編集', edit_picture_path(picture.id), class: "btn btn-outline-success" %>
               <%= link_to '削除', picture_path(picture.id), class: "btn btn-outline-danger" , method: :delete, data: {confirm: "本当に削除していいですか？"} %>
-            <% else %>
+              <% else %>
               <span>　</span>
               <span>　</span>
-            <% end %> 
+             <% end %>
+            
           </div>
         </div>
       </div>
