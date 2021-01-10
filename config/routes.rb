@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'pictures#index'
+  root 'tops#index'
+  # root 'pictures#index'
   resources :pictures do
     collection do
       post :confirm

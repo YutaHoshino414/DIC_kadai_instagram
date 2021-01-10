@@ -17,3 +17,5 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(".line").animate({"width":"100%"},1500);
